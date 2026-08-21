@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Voice Input Anywhere",
+  "version": "0.1.0",
+  "description": "任意网页语音输入：点悬浮麦克风说话，转写文字自动插入光标所在输入框。默认硅基流动（免费、中文识别强、国内直连）。",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://api.siliconflow.cn/*",
+    "https://api.groq.com/*",
+    "https://api.openai.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Voice Input Anywhere 设置",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "toggle-recording": {
+      "suggested_key": {
+        "default": "Alt+Shift+V"
+      },
+      "description": "开始 / 停止语音输入"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

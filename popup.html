@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { width: 300px; margin: 0; padding: 16px; font: 13px/1.5 system-ui, sans-serif; color: #1f2328; }
+    h1 { font-size: 15px; margin: 0 0 12px; }
+    label { display: block; margin: 10px 0 4px; font-weight: 600; font-size: 12px; color: #57606a; }
+    input, select { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #d0d7de; border-radius: 6px; font-size: 13px; }
+    .hint { font-size: 11px; color: #8b949e; margin-top: 3px; }
+    .row { display: flex; gap: 8px; margin-top: 14px; }
+    button { flex: 1; padding: 7px 0; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; }
+    #save { background: #0969da; color: #fff; }
+    #save:disabled { opacity: .6; cursor: default; }
+    #status { text-align: center; margin-top: 8px; font-size: 12px; min-height: 18px; }
+    .ok { color: #1a7f37; } .err { color: #cf222e; }
+  </style>
+</head>
+<body>
+  <h1>🎤 Voice Input Anywhere</h1>
+
+  <label>服务商</label>
+  <select id="provider">
+    <option value="siliconflow">SiliconFlow 硅基流动（免费，中文强）</option>
+    <option value="groq">Groq（免费额度，需代理）</option>
+    <option value="openai">OpenAI Whisper（付费）</option>
+  </select>
+
+  <label>API Key</label>
+  <input id="apiKey" type="password" placeholder="粘贴你的 API Key" autocomplete="off">
+  <div class="hint">硅基流动：cloud.siliconflow.cn 免费注册，SenseVoice / TeleSpeech 模型免费</div>
+
+  <label>模型（留空用服务商默认）</label>
+  <input id="model" placeholder="如 TeleAI/TeleSpeechASR 或 FunAudioLLM/SenseVoiceSmall">
+
+  <label>语言提示（留空自动检测）</label>
+  <input id="language" placeholder="zh / en">
+
+  <div class="row">
+    <button id="save">保存</button>
+  </div>
+  <div id="status"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
